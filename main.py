@@ -1,9 +1,23 @@
+import os
+import threading
+from flask import Flask
 import telebot
 from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton
 import random
 import string
 
-# --- তোমার দেওয়া নতুন আপডেট করা তথ্য ---
+# --- ওয়েব সার্ভার (Render-কে সচল রাখার জন্য) ---
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return "Bot is alive!"
+
+def run_flask():
+    port = int(os.environ.get("PORT", 10000))
+    app.run(host='0.0.0.0', port=port)
+
+# --- টেলিগ্রাম বট কনফিগারেশন ---
 API_TOKEN = '8976678352:AAF8RaVc7nzk-3PjBpqRpzKDo2rDa4H02bY'
 ADMIN_GROUP_ID = -1003932572317
 
@@ -55,4 +69,6 @@ def process_screenshot(message):
     else:
         bot.reply_to(message, "⚠️ এটি ছবি নয়। দয়া করে স্ক্রিনশটের ছবি পাঠাবেন।")
 
-bot.infinity_polling()
+if __name__ == "__main__":
+    threading.Thread(target=run_flask).start()
+    bot.infinity_polling()
