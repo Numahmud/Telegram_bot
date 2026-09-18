@@ -3,8 +3,8 @@ from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton
 import random
 import string
 
-# --- তোমার তথ্য অনুযায়ী কনফিগার করা ---
-API_TOKEN = '8976678352:AAF8RaVc7nzk-3PiBogRpzKDo'
+# --- তোমার দেওয়া নতুন আপডেট করা তথ্য ---
+API_TOKEN = '8976678352:AAF8RaVc7nzk-3PjBpqRpzKDo2rDa4H02bY'
 ADMIN_GROUP_ID = -1003932572317
 
 bot = telebot.TeleBot(API_TOKEN)
